@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<h2>Welcome, {{ session['name'] }}!</h2>
+<p>This is your secure dashboard.</p>
+
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="flash flash-success">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<br>
+<!-- Logout Button -->
+<a href="{{ url_for('main.logout') }}" class="btn btn-danger">Log Out</a>
+{% endblock %}

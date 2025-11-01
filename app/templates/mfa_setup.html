@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}MFA Setup{% endblock %}
+
+{% block content %}
+<div class="mfa-container">
+    <h2>Set Up 2-Factor Auth</h2>
+    <p>Scan this QR code with your Authenticator App.</p>
+
+    <p><img src="{{ qrcode(uri, box_size=10, border=4) }}" alt="MFA QR Code"></p>
+
+    <p>Or, enter this secret key manually:</p>
+    <p><strong>{{ secret }}</strong></p>
+
+    <hr style="border: 0; border-top: 1px solid #eee; margin: 1.5rem 0;">
+
+    <p>Then, enter the 6-digit code from your app to verify.</p>
+
+    {% if error %}
+        <div class="flash flash-error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST" novalidate>
+        {{ form.hidden_tag() }} <!-- CSRF -->
+
+        <div class="form-group">
+            {{ form.code.label(text="6-Digit Code") }}
+            {{ form.code(autocomplete="off") }}
+        </div>
+
+        {{ form.submit(value="Verify & Complete Setup") }}
+    </form>
+</div>
+{% endblock %}
+
