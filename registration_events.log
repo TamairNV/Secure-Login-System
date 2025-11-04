@@ -6,3 +6,16 @@
 [2025-10-31 00:15:43] INFO: Successful login for user: admin, IP: 127.0.0.1
 [2025-10-31 00:26:34] INFO: Successful login for user: admin, IP: 127.0.0.1
 [2025-10-31 00:26:53] INFO: Logout event for user: admin, IP: 127.0.0.1
+[2025-11-04 15:05:56] INFO: Successful login for user: admin, IP: 127.0.0.1
+[2025-11-04 15:06:25] INFO: Logout event for user: admin, IP: 127.0.0.1
+[2025-11-04 15:06:32] WARNING: Failed login attempt for username: admin, IP: 127.0.0.1
+[2025-11-04 15:08:21] WARNING: Failed login attempt for username: admin, IP: 127.0.0.1
+[2025-11-04 15:08:23] WARNING: Failed login attempt for username: admin, IP: 127.0.0.1
+[2025-11-04 15:08:23] INFO: CAPTCHA triggered for user: admin, IP: 127.0.0.1, Failed attempts: 3
+[2025-11-04 15:08:31] INFO: Successful login for user: admin, IP: 127.0.0.1
+[2025-11-04 15:09:11] INFO: Logout event for user: admin, IP: 127.0.0.1
+[2025-11-04 15:13:14] INFO: Successful login for user: admin, IP: 127.0.0.1
+[2025-11-04 15:13:37] INFO: Successful login for user: admin, IP: 127.0.0.1
+[2025-11-04 15:14:02] INFO: Successful login for user: admin, IP: 127.0.0.1
+[2025-11-04 15:14:29] INFO: Successful login for user: admin, IP: 127.0.0.1
+[2025-11-04 15:14:38] INFO: Logout event for user: admin, IP: 127.0.0.1

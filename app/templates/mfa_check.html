@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}MFA Setup{% endblock %}
+
+{% block content %}
+<div class="mfa-container">
+    <h2>2-Factor Auth</h2>
+
+    <hr style="border: 0; border-top: 1px solid #eee; margin: 1.5rem 0;">
+
+    <p>Then, enter the 6-digit code from your app to verify.</p>
+
+    {% if error %}
+        <div class="flash flash-error">{{ error }}</div>
+    {% endif %}
+
+    <form method="POST" novalidate>
+        {{ form.hidden_tag() }} <!-- CSRF -->
+
+        <div class="form-group">
+            {{ form.code.label(text="6-Digit Code") }}
+            {{ form.code(autocomplete="off") }}
+        </div>
+
+        {{ form.submit(value="Verify & Complete Setup") }}
+    </form>
+</div>
+{% endblock %}
+

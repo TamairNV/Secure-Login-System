@@ -109,6 +109,8 @@ def logout():
 def mfa_setup():
     if 'mfa_secret' not in session:
         session['mfa_secret'] = pyotp.random_base32()
+    else:
+        return redirect(url_for("main.mfa_check"))
 
     secret = session['mfa_secret']
     totp = pyotp.TOTP(secret)
@@ -131,6 +133,30 @@ def mfa_setup():
             )
             error = "Incorrect Code"
     return render_template("mfa_setup.html",uri=uri,secret = totp.secret,form=form,error=error)
+
+
+@main.route('/mfa_check', methods=['GET', 'POST'])
+def mfa_check():
+    secret = session['mfa_secret']
+    totp = pyotp.TOTP(secret)
+    error = ""
+    form = mfaForm()
+    if form.validate_on_submit():
+        code = form.code.data
+        if totp.verify(code):
+
+            user = User.query.filter_by(username=session['name']).first()
+            login_user(user)
+            user.secret = secret
+            user.commitDB()
+
+            return redirect(url_for("main.dashboard"))
+        else:
+            current_app.logger.warning(
+                f'Invalid TOTP code for user: {session["name"]}, IP: {request.remote_addr}'
+            )
+            error = "Incorrect Code"
+    return render_template("mfa_check.html",form=form,error=error)
 
 
 
